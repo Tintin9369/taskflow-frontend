@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TasksFlow</title>
+    <link href="./styles/index.css" rel="stylesheet" />
+    <link href="./styles/components/header.css" rel="stylesheet" />
+    <link href="./styles/components/footer.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/images/logo_mutitasking.jpg" />
+  </head>
+
+  <body>
+    <header>
+      <div>
+        <img
+          class="MultiTasking_logo"
+          src="./assets/images/logo_mutitasking.jpg"
+          alt="logo de multi_tasking"
+        />
+
+        <nav>
+          <a href="#">Home</a>
+          <a href="./about_us.html">About</a>
+          <a href="./contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="main-layout theme-a adaptive">
+        <!-- COLONNE GAUCHE : Introduction -->
+        <section class="introduction">
+          <h1>Gérez vos tâches</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, sint ?...</p>
+
+          <button class="theme-toggle">Thème clair/sombre</button>
+          <button class="add-task_Btn">Ajouter une tâche</button>
+        </section>
+
+        <!-- COLONNE DROITE : Liste des tâches -->
+        <section class="Tasks_table">
+          <div class="task-filter">
+            <button class="btn_filter btn_all" type="button" autofocus>
+              Toutes les tâches
+            </button>
+            <button class="btn_filter btn_active" type="button">
+              En cours
+            </button>
+            <button class="btn_filter btn_done" type="button">Terminées</button>
+          </div>
+
+          <div class="task-counter"></div>
+
+          <div class="task-list"></div>
+        </section>
+      </div>
+
+      <!-- Modale placée en dehors du layout (meilleure pratique) -->
+      <div class="modal-backdrop hidden">
+        <div class="modal">
+          <button class="close">&times;</button>
+          <form class="addNewTask">
+            <label for="newTask">Ajouter une nouvelle tâche :</label>
+            <input
+              type="text"
+              id="newTask"
+              name="newTask"
+              placeholder="Ex : Acheter du lait"
+            />
+            <div class="actions">
+              <button type="button" class="cancel">Annuler</button>
+              <button type="submit" id="addTaskBtn">Ajouter</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 TaskFlow.</p>
+      <p>Tous droits réservés @ Lionel Spingarn</p>
+    </footer>
+  </body>
+
+  <script type="module" src="./scripts/app.js"></script>
+  <script type="module" src="./scripts/components/taskForm.js"></script>
+  <script type="module" src="./scripts/components/taskList.js"></script>
+  <script type="module" src="./scripts/components/taskModal.js"></script>
+  <script type="module" src="./scripts/utils/storage.js"></script>
+</html>

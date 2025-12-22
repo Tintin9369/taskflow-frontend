@@ -1,0 +1,17 @@
+* {
+    margin: 0px;
+}
+
+footer {
+    margin: auto;
+    padding: 20px;    
+    background-color: #bfbfbf;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+p {
+   font-family: "Roboto", sans-serif;
+   font-size: 1.2rem;
+}

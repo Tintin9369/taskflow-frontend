@@ -1,0 +1,445 @@
+* {
+    margin: 0px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #ffffff;
+    --text: #111111;
+    --card-bg: #f5f5f5;
+    --button-bg: #e0e0e0;
+    --accent: #3b82f6;
+    --border: #e5e7eb;
+    --danger: #ef4444;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --card-bg-done: #d7dbe0;
+}
+
+.MultiTasking_logo {
+    max-width: 75px;
+    height: auto;
+    margin: auto;
+    padding: 15px;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: "Roboto", sans-serif;
+    font-size: 2.6rem;
+    color: var(--text);
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    text-align: left;
+    color: var(--text);
+}
+
+button {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 10px;
+    max-width: 30%;
+    text-align: center;
+    background: var(--button-bg);
+    transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+    background: #c5cfd1;
+}
+
+.task-edit {
+    width: 100%;
+    padding: 6px 10px;
+    font-size: 1.1rem;
+}
+
+.toggle-task {
+    transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.toggle-task:active {
+    transform: scale(0.85);
+}
+
+.introduction {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 20px;
+    background: var(--card-bg);
+    align-items: center;
+}
+
+.introduction p,
+.introduction h1,
+.introduction button {
+    padding: 20px;
+    margin: 15px;
+    text-align: center;
+    color: var(--text);
+}
+
+.Tasks_table {
+    width: 80%;
+    margin: 20px auto;
+    max-width: 700px;
+}
+
+.taskText {
+    font-family: "Arial", sans-serif;
+    font-weight: normal;
+    font-size: clamp(0.95rem, 2.3vw, 1.3rem);
+    color: var(--text);
+}
+
+/* Paramétrages de la Modale */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+.task-item {
+    background: var(--card-bg);
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: background 0.2s ease,
+                transform 0.2s ease,
+                opacity 0.2s ease,
+                color 0.2s ease;;
+    width: 100%;
+    /* Animation ajoutée */
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-item.done span {
+    text-decoration: line-through;
+    opacity: 0.6;
+    transform: translateX(3px);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.task-item.done {
+    background: var(--card-bg-done);
+    opacity: 0.8;
+}
+
+.task-item.remove {
+    opacity: 0;
+    transform: scale(0.7);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+
+.task-counter {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: var(--bg);
+    text-color: black;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.task-filter {
+    display: flex;
+    /* margin: 5px;
+    padding: 6px; */
+    gap: 20px;
+    justify-content: center;
+}
+
+/* =======================================
+   📱 Responsive Mobile
+   (max-width: 576px)
+   ======================================= */
+@media screen and (max-width: 576px) {
+
+    /* Colonne unique centrée */
+    .main-layout {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+    }
+
+    /* Boutons intro (clair/sombre + ajouter une tâche) */
+    .introduction button {
+        width: 100%;
+        max-width: 280px;
+        margin: 10px auto;
+        padding: 12px;
+        font-size: 1rem;
+        display: block;
+    }
+
+    /* Espacement entre les boutons */
+    .introduction .theme-toggle {
+        margin-bottom: 15px;
+    }
+
+    /* Filtres des tâches */
+    .task-filter {
+        display: flex;
+        flex-wrap: wrap; /* permet de passer à la ligne */
+        justify-content: center;
+        gap: 10px; /* espace entre les boutons */
+        width: 100%;
+        padding: 0 10px;
+        margin: 15px 0;
+    }
+
+    .task-filter button {
+        flex: 1 1 45%; /* 2 colonnes fluides */
+        padding: 12px 6px;
+        font-size: 0.95rem;
+        max-width: 160px;
+        text-align: center;
+    }
+
+    /* Texte des tasks légèrement plus petit */
+    /* .taskText {
+        font-size: 1rem;
+    } */
+
+    /* Les cartes prennent toute la largeur */
+    .task-item {
+        width: 100%;
+    }
+}
+
+/* =======================================
+   📘 Responsive Tablette
+   (max-width: 768px)
+   ======================================= */
+@media (max-width: 768px) {
+
+    /* Structure globale */
+    .main-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    body {
+        padding: 20px;
+    }
+
+    /* Introduction */
+    .introduction {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    .introduction h1 {
+        font-size: 2.2rem;
+    }
+
+    .introduction p {
+        font-size: 1.1rem;
+    }
+
+    .introduction button {
+        padding: 14px;
+        font-size: 1.1rem;
+        width: 100%;
+        max-width: 350px;
+        margin: auto;
+    }
+
+    /* Section des tâches */
+    .Tasks_table {
+        width: 90%;
+        max-width: 700px;
+        margin: auto;
+    }
+
+    .task-list {
+        gap: 12px;
+    }
+
+    .task-item {
+        padding: 14px;
+        font-size: 1rem;
+    }
+
+    /* Filtres */
+    .task-filter {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        padding: 10px 0;
+    }
+
+    .task-filter button {
+        flex: 1 1 120px;
+        padding: 12px;
+        font-size: 1.1rem;
+    }
+
+    /* Boutons dans les tâches */
+    .task-item button {
+        padding: 8px 14px;
+        font-size: 1.1rem;
+    }
+}
+
+/* ========================================================
+   🖥️  Desktop HD (écran ≥ 1200px)
+   ======================================================== */
+@media (min-width: 1200px) {
+
+    /* Layout global */
+    .main-layout {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 60px;
+        max-width: 1400px;
+        margin: 40px auto;
+        padding: 0 40px;
+    }
+
+    /* Introduction à gauche */
+    .introduction {
+        width: 40%;
+        padding: 20px;
+    }
+
+    .introduction h1 {
+        font-size: 2.8rem;
+    }
+
+    .introduction p {
+        font-size: 1.25rem;
+        line-height: 1.6;
+    }
+
+    .introduction button {
+        font-size: 1.2rem;
+        padding: 14px 22px;
+        max-width: 250px;
+    }
+
+    /* Colonne des tâches à droite */
+    .Tasks_table {
+        width: 60%;
+        max-width: 750px;
+        margin-top: 20px;
+    }
+
+    .task-list {
+        gap: 15px;
+    }
+
+    .task-item {
+        padding: 16px 20px;
+        font-size: 1.15rem;
+    }
+
+    /* Filtres */
+    .task-filter {
+        display: flex;
+        justify-content: flex-start;
+        gap: 14px;
+        padding-bottom: 10px;
+    }
+
+    .task-filter button {
+        padding: 12px 18px;
+        font-size: 1.15rem;
+    }
+
+    /* Boutons des tâches */
+    .task-item button {
+        font-size: 1.3rem;
+        padding: 8px 16px;
+    }
+}
+
+
+/* Toggle pour contrôler le mode sombre/clair */
+
+:root.dark {
+    --bg: #1e1e1e;
+    --text: #f8f8f8;
+    --card-bg: #2a2a2a;
+    --button-bg: #444;
+    --accent: #60a5fa;
+    --border: #2e2e2e;
+    --danger: #f87171;
+    --shadow-color: rgba(0, 0, 0, 0.6);
+}

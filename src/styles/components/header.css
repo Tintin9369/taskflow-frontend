@@ -1,0 +1,45 @@
+* {
+    margin: 0px;
+}
+
+header {
+    margin: 0px;
+    padding: 10px;
+    background-color: #bfbfbf;
+}
+
+header a {
+    padding: 10px;
+    margin: 30px;
+    width: 75%;
+    font-size: 1.7rem;
+    text-decoration: none;
+}
+
+header > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-height: auto;
+}
+
+.MultiTasking_logo {
+    width: fill;
+    max-height: auto;
+    margin: 0px;
+}
+
+@media screen and (max-width: 576px) {
+    header div,
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header a {
+        padding: 5px;
+        margin: 5px;
+    }
+}
